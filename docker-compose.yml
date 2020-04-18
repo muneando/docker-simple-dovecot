@@ -2,10 +2,14 @@ version: '3'
 
 services:
   dovecot:
-    build: .
+    image: muneando/dovecot
     ports:
       - "143:143"
       - "993:993"
-    #volumes:
-    #  - ./conf/:/ect/dovecot
+    volumes:
+      - ./conf/:/ect/dovecot
+      - ./home:/home
+    env_file:
+        - ./.env
+    tty: true
     privileged: true
