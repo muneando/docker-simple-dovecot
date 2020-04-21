@@ -31,3 +31,5 @@ RUN chmod 775 /entrypoint.sh
 CMD /usr/sbin/service cron start
 
 ENTRYPOINT ["/entrypoint.sh"]
+
+CMD ["tail", "-fn", "0", "/var/log/mail.log"]
