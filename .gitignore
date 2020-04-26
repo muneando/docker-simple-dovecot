@@ -1,2 +1,3 @@
 .env
 home/
+docker-compose-qnap.yml
