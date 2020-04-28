@@ -28,8 +28,6 @@ RUN chmod 644 /etc/cron.d/getmail
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod 775 /entrypoint.sh
 
-CMD /usr/sbin/service cron start
+CMD /usr/sbin/service cron start && tail -f /dev/null
 
 ENTRYPOINT ["/entrypoint.sh"]
-
-CMD ["tail", "-fn", "0", "/var/log/mail.log"]
