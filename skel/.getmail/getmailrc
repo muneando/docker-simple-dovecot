@@ -11,3 +11,4 @@ path = ~/Maildir/
 
 [options]
 read_all = False
+delete = true
