@@ -12,13 +12,14 @@ MAIL_PASSWORD=${3:-$MAIL_PASSWORD}
 MAIL_POP_PORT=${4:-$MAIL_POP_PORT}
 MAIL_DOMAIN=${5:-$MAIL_DOMAIN}
 
-useradd --groups=users --shell='/bin/bash' --create-home "$1"
-echo -e "$DEFAULT_PASSWORD\n$DEFAULT_PASSWORD\n" | passwd "$1"
-sed -i -e "s/USER/$1/" /home/$1/.getmail/getmailrc
-sed -i -e "s/MAIL_DOMAIN/$MAIL_DOMAIN/" /home/$1/.getmail/getmailrc
-sed -i -e "s/MAIL_POP_PORT/$MAIL_POP_PORT/" /home/$1/.getmail/getmailrc
-sed -i -e "s/MAIL_PASSWORD/$MAIL_PASSWORD/" /home/$1/.getmail/getmailrc
+if [ ! -d "/home/$1" ];then
+  useradd --groups=users --shell='/bin/bash' --create-home "$1"
+  echo -e "$DEFAULT_PASSWORD\n$DEFAULT_PASSWORD\n" | passwd "$1"
+  sed -i -e "s/USER/$1/" /home/$1/.getmail/getmailrc
+  sed -i -e "s/MAIL_DOMAIN/$MAIL_DOMAIN/" /home/$1/.getmail/getmailrc
+  sed -i -e "s/MAIL_POP_PORT/$MAIL_POP_PORT/" /home/$1/.getmail/getmailrc
+  sed -i -e "s/MAIL_PASSWORD/$MAIL_PASSWORD/" /home/$1/.getmail/getmailrc
 
-chmod 0700 /home/$1/.getmail/getmailrc
-
+  chmod 0700 /home/$1/.getmail/getmailrc
+fi
 exit 0
