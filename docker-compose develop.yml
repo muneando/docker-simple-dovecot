@@ -2,7 +2,7 @@ version: '3'
 
 services:
   dovecot:
-    build: .
+    image: dovecot 
     ports:
       - "143:143"
       - "993:993"
