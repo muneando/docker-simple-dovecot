@@ -4,8 +4,11 @@
 
 set -eu
 
-# ダミーユーザー作成
-/dovecot_useradd.sh imap-test
+# 初期ユーザー作成
+USERS=(${DEFAULT_USERS//,/ })
+for USER in ${USERS[@]}; do
+  /dovecot_useradd.sh $USER
+done
 
 # start services
 echo "Starting services..."
