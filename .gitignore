@@ -1,3 +1,4 @@
 .env
 home/
 docker-compose-qnap.yml
+docker-compose-develop.yml
