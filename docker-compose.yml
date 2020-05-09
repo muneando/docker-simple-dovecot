@@ -7,8 +7,7 @@ services:
       - "143:143"
       - "993:993"
     volumes:
-      - ./conf/:/ect/dovecot
-      - ./home:/home
+       - ./home:/home
     env_file:
         - ./.env
     tty: true
