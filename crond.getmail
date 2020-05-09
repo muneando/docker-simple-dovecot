@@ -3,4 +3,4 @@ SHELL=/bin/sh
 MAILTO=””
 
 # m h dom mon dow user  command
-*/5 *  *   *   * root  /cron-getmail.sh
+*/3 *  *   *   * root  /cron-getmail.sh
